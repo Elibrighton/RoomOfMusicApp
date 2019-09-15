@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Breadcrumb } from 'antd'
 
 export default class Home extends React.Component {
     render() {
         return (
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-            </ul>
+            <>
+                <Breadcrumb style={{ margin: '16px 0' }}>
+                    <Breadcrumb.Item>Home</Breadcrumb.Item>
+                </Breadcrumb>
+                <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Home</div>
+            </>
         )
     }
 }
