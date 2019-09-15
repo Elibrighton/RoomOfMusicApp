@@ -7,6 +7,7 @@ import Home from './Home';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb } from 'antd'
 import 'antd/dist/antd.css';
+import Students from './Students';
 
 const { Header, Footer, Content } = Layout;
 const year: number = new Date().getFullYear();
@@ -26,6 +27,7 @@ export default class App extends React.Component {
             <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
             <Menu.Item key="2"><Link to="/about">About</Link></Menu.Item>
             <Menu.Item key="3"><Link to="/contact">Contact</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/students">Students</Link></Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px' }}>
@@ -36,6 +38,7 @@ export default class App extends React.Component {
               component={About}
             />
             <Route path="/contact" component={Contact} />
+            <Route path="/students" component={Students} />
           </Switch>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Room Of Music ©{year} Created by JET Brighton PTY LTD</Footer>
