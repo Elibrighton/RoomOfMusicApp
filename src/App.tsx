@@ -9,36 +9,37 @@ import { Layout, Menu, Breadcrumb } from 'antd'
 import 'antd/dist/antd.css';
 
 const { Header, Footer, Content } = Layout;
+const year: number = new Date().getFullYear();
 
-const App: React.FC = () => {
-  return (
-    <Layout className="layout">
-      <Header>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['1']}
-          style={{ lineHeight: '64px' }}
-        >
-          <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
-          <Menu.Item key="2"><Link to="/about">About</Link></Menu.Item>
-          <Menu.Item key="3"><Link to="/contact">Contact</Link></Menu.Item>
-        </Menu>
-      </Header>
-      <Content style={{ padding: '0 50px' }}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route
-            path="/about"
-            component={About}
-          />
-          <Route path="/contact" component={Contact} />
-        </Switch>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>Room Of Music ©2019 Created by JET Brighton PTY LTD</Footer>
-    </Layout>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <Layout className="layout" >
+        <Header>
+          <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['1']}
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/about">About</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/contact">Contact</Link></Menu.Item>
+          </Menu>
+        </Header>
+        <Content style={{ padding: '0 50px' }}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route
+              path="/about"
+              component={About}
+            />
+            <Route path="/contact" component={Contact} />
+          </Switch>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Room Of Music ©{year} Created by JET Brighton PTY LTD</Footer>
+      </Layout>
+    );
+  }
 }
-
-export default App;
