@@ -5,7 +5,7 @@ import About from './About'
 import Contact from './Contact';
 import Home from './Home';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Menu } from 'antd'
 import 'antd/dist/antd.css';
 import Students from './Students';
 
