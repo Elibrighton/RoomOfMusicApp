@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export type Student = {
     Id: string;
     FirstName: string;
@@ -9,7 +11,7 @@ export type Student = {
     Mobile: string;
     Instrument: string;
     Grade: number;
-    DateOfBirth: Date;
+    DateOfBirth: string;
 }
 
 export type StudentDto = {
@@ -38,7 +40,7 @@ export default function updateFromDto(studentDto: StudentDto): Student {
         Mobile: studentDto.Mobile,
         Instrument: studentDto.Instrument,
         Grade: studentDto.Grade,
-        DateOfBirth: studentDto.DateOfBirth
+        DateOfBirth: moment(studentDto.DateOfBirth).format('DD/MM/YYYY')
     };
 
     return student;
