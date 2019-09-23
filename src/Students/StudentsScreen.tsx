@@ -1,7 +1,8 @@
 import React from "react";
-import { Breadcrumb, Table } from "antd";
+import { Breadcrumb, Table, Button } from "antd";
 import { observer, inject } from 'mobx-react';
 import { StudentsStore } from './StudentsStore'
+import { Link } from "react-router-dom";
 
 interface IStudentsProps {
     store: StudentsStore;
@@ -74,7 +75,10 @@ export default class StudentsScreen extends React.Component<IStudentsProps> {
                     <Breadcrumb.Item>Students</Breadcrumb.Item>
                 </Breadcrumb>
                 <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
-                    <Table dataSource={store.studentsList} columns={columns} />
+                    <Link to="/students/add">
+                        <Button type="primary" icon="plus">Add</Button>
+                    </Link>
+                    <Table columns={columns} dataSource={store.studentsList} />
                 </div>
             </>
         )
