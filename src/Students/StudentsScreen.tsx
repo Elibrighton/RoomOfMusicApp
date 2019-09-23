@@ -1,28 +1,21 @@
 import React from "react";
 import { Breadcrumb, Table } from "antd";
-import { Student } from "./Models/Student";
-import axios from "axios";
+import { observer, inject } from 'mobx-react';
+import { StudentsStore } from './StudentsStore'
 
-interface IStudentsState {
-    studentList: Student[];
+interface IStudentsProps {
+    store: StudentsStore;
 }
 
-export default class Students extends React.Component<{}, IStudentsState> {
-    constructor(props: {}) {
-        super(props)
-        this.state = {
-            studentList: []
-        }
+@inject('store')
+@observer
+export default class StudentsScreen extends React.Component<IStudentsProps> {
+    componentDidMount() {
+        this.props.store.getStudentsList();
     }
 
-    componentDidMount() {
-        axios.get("/api/students")
-            .then(res => {
-                const studentList = res.data;
-                this.setState({ studentList });
-            })
-    }
     render() {
+        const { store } = this.props
         const columns = [
             {
                 title: "First Name",
@@ -81,7 +74,7 @@ export default class Students extends React.Component<{}, IStudentsState> {
                     <Breadcrumb.Item>Students</Breadcrumb.Item>
                 </Breadcrumb>
                 <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
-                    <Table dataSource={this.state.studentList} columns={columns} />
+                    <Table dataSource={store.studentsList} columns={columns} />
                 </div>
             </>
         )
