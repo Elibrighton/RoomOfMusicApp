@@ -8,9 +8,9 @@ export class StudentsStore {
 
     @action
     getStudentsList() {
-        gateway.GetStudents()
-            .then((data) => {
-                this.studentsList = data;
+        gateway.GetStudentsList()
+            .then((studentList) => {
+                this.studentsList = studentList;
             })
     }
 }

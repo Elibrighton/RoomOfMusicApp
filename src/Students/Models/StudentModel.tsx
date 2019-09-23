@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 export type Student = {
+    key: string,
     Id: string;
     FirstName: string;
     Surname: string;
@@ -30,6 +31,7 @@ export type StudentDto = {
 
 export default function updateFromDto(studentDto: StudentDto): Student {
     const student: Student = {
+        key: studentDto.Id,
         Id: studentDto.Id,
         FirstName: studentDto.FirstName,
         Surname: studentDto.Surname,

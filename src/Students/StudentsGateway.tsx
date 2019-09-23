@@ -2,7 +2,7 @@ import axios from 'axios';
 import updateFromDto, { StudentDto, Student } from './Models/StudentModel';
 
 export class StudentsGateway {
-    async GetStudents(): Promise<Student[]> {
+    async GetStudentsList(): Promise<Student[]> {
         let studentsList: Student[] = [];
         await axios.get("/api/students")
             .then(res => {
