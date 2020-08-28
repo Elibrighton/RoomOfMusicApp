@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from './Students/StudentsStore';
+import { store } from './Student/StudentStore';
 import { Provider } from 'mobx-react';
 
 ReactDOM.render(

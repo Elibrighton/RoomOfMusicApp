@@ -7,8 +7,8 @@ import Home from './Home';
 import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd'
 import 'antd/dist/antd.css';
-import StudentsScreen from './Students/StudentsScreen';
-import AddStudentsScreen from './Students/AddStudentScreen';
+import StudentScreen from './Student/StudentScreen';
+import AddStudentScreen from './Student/AddStudentScreen';
 
 const { Header, Footer, Content } = Layout;
 const year: number = new Date().getFullYear();
@@ -39,8 +39,8 @@ export default class App extends React.Component {
               component={About}
             />
             <Route path="/contact" component={Contact} />
-            <Route path="/students" exact component={StudentsScreen} />
-            <Route path="/students/add" component={AddStudentsScreen} />
+            <Route path="/students" exact component={StudentScreen} />
+            <Route path="/students/add" component={AddStudentScreen} />
           </Switch>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Room Of Music ©{year} Created by JET Brighton PTY LTD</Footer>

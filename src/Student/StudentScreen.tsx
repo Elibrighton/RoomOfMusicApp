@@ -1,22 +1,21 @@
 import React from "react";
 import { Breadcrumb, Table, Button } from "antd";
 import { observer, inject } from 'mobx-react';
-import { StudentsStore } from './StudentsStore'
+import { StudentStore } from './StudentStore'
 import { Link } from "react-router-dom";
 
-interface IStudentsProps {
-    store: StudentsStore;
+interface IStudentProps {
+    store?: StudentStore;
 }
 
 @inject('store')
 @observer
-export default class StudentsScreen extends React.Component<IStudentsProps> {
+export default class StudentScreen extends React.Component<IStudentProps> {
     componentDidMount() {
-        this.props.store.getStudentsList();
+        this.props.store!.getStudentList();
     }
 
     render() {
-        const { store } = this.props
         const columns = [
             {
                 title: "First Name",
@@ -64,7 +63,7 @@ export default class StudentsScreen extends React.Component<IStudentsProps> {
                 key: "Id",
             },
             {
-                title: "Dob",
+                title: "Date of birth",
                 dataIndex: "DateOfBirth",
                 key: "Id",
             }
@@ -78,7 +77,7 @@ export default class StudentsScreen extends React.Component<IStudentsProps> {
                     <Link to="/students/add">
                         <Button type="primary" icon="plus">Add</Button>
                     </Link>
-                    <Table columns={columns} dataSource={store.studentsList} />
+                    <Table columns={columns} dataSource={this.props.store!.studentList} />
                 </div>
             </>
         )

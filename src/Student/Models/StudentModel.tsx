@@ -5,7 +5,7 @@ export type Student = {
     Id: string;
     FirstName: string;
     Surname: string;
-    IsRetired: string;
+    IsRetired: boolean;
     ParentName: string;
     Email: string;
     Phone: string;
@@ -19,14 +19,14 @@ export type StudentDto = {
     Id: string;
     FirstName: string;
     Surname: string;
-    IsRetired: boolean;
+    IsRetired: string;
     ParentName: string;
     Email: string;
     Phone: string;
     Mobile: string;
     Instrument: string;
     Grade: number;
-    DateOfBirth: Date;
+    DateOfBirth: string;
 }
 
 export default function updateFromDto(studentDto: StudentDto): Student {
@@ -35,15 +35,33 @@ export default function updateFromDto(studentDto: StudentDto): Student {
         Id: studentDto.Id,
         FirstName: studentDto.FirstName,
         Surname: studentDto.Surname,
-        IsRetired: studentDto.IsRetired.toString(),
+        IsRetired: studentDto.IsRetired ? true : false,
         ParentName: studentDto.ParentName,
         Email: studentDto.Email,
         Phone: studentDto.Phone,
         Mobile: studentDto.Mobile,
         Instrument: studentDto.Instrument,
         Grade: studentDto.Grade,
-        DateOfBirth: moment(studentDto.DateOfBirth).format('DD/MM/YYYY')
+        DateOfBirth: moment(studentDto.DateOfBirth, "YYYY-MM-DD").format("DD/MM/YYYY")
     };
 
     return student;
+}
+
+export function toDto(student: Student): StudentDto {
+    const studentDto: StudentDto = {
+        Id: student.Id,
+        FirstName: student.FirstName,
+        Surname: student.Surname,
+        IsRetired: student.IsRetired ? "true" : "false",
+        ParentName: student.ParentName,
+        Email: student.Email,
+        Phone: student.Phone,
+        Mobile: student.Mobile,
+        Instrument: student.Instrument,
+        Grade: student.Grade,
+        DateOfBirth: student.DateOfBirth
+    };
+
+    return studentDto;
 }
